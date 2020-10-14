@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    #div {
+      position: absolute;
+      left: 150px;
+      top: 150px;
+      width: 100px;
+      height: 100px;
+      background: pink;
+      transition: background .5s;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div id="div"></div>
+
+  </div>
+  <script>
+    let lefts = 0, tops = 0
+    div.addEventListener("mousedown", keydownHandler)
+    div.addEventListener("mouseup", mouseupHandler)
+    function keydownHandler(e) {
+      if (e.target.constructor !== HTMLDivElement) return
+      document.body.addEventListener("mousemove", mousemoveHandler)
+      lefts = e.offsetX
+      tops = e.offsetY
+      div.style.background = "yellow"
+    }
+    function mousemoveHandler(e) {
+      div.style.left = e.clientX - lefts + "px"
+      div.style.top = e.clientY - tops + "px"
+    }
+    function mouseupHandler() {
+      document.body.removeEventListener("mousemove", mousemoveHandler)
+
+      div.style.background = "pink"
+    }
+
+
+  </script>
+</body>
+</html>

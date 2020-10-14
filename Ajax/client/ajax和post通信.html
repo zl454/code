@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var xhr = new XMLHttpRequest()  //1、创建XMLHttpRequest对象
+    xhr.open("POST", "http://192.168.31.167:3010")  //2、调用XMLHttpRequest的open函数
+    xhr.send("user=zhanglin&age=30")  //3、XMLHttpRequest向服务器发送请求
+    xhr.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        if (this.status === 200) {
+          console.log(JSON.parse(this.response)); //返回的response为字符串，需要转换为对象
+        }
+      }
+    }
+    // xhr.addEventListener("load", loadHandler)
+    // function loadHandler(e) {
+    //   console.log(this.response);
+    // }
+  </script>
+</body>
+</html>

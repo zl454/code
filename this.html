@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>anniu</button>
+  <!-- this -->
+  <!-- <script>
+    var obj = {
+      func: function () {
+        console.log(this);
+      }
+    }
+    var foo = obj.func;
+    obj.func()  //obj
+    foo() //window
+
+    function fn1() {
+      console.log(this);
+    }
+    fn1()
+
+
+    document.addEventListener("click", clickHandler)
+    function clickHandler(e) {
+      console.log(this);
+      console.log(e.currentTarget);
+    }
+
+
+    console.log(obj);
+    console.log(obj.func);
+    console.log(new Function());
+  </script> -->
+  <!-- 原型链 -->
+  <!-- <script>
+    function F1() { };
+    var F2 = function () { };
+    var F3 = function (n1, n2) { return n1 + n2 };
+
+    console.log(typeof F1);
+    console.log(typeof F2);
+    console.log(typeof F3);
+    console.log(typeof Object);
+    console.log(typeof Array);
+    console.log(typeof String);
+    console.log(typeof Date);
+    console.log(typeof Function);
+    console.log(F2);
+  </script> -->
+  <!-- 数组扁平化 -->
+  <!-- <script>
+    function flatten(arr) {
+      return arr.reduce((result, item) => {
+        return result.concat(Array.isArray(item) ? flatten(item) : item);
+      }, []);
+    }
+    let array = [1, 2, [2, 3], [3, 3, [4, 4, 4, 4,], [2, 2]], 5]
+    console.log(flatten(array));
+    function flatten2(arr) {
+      return arr.toString().split(",").map((item) => { return Number(item) })
+    }
+    console.log(flatten2(array));
+
+    function flatten4(arr) {
+      let res = []
+      arr.map(item => {
+        if (Array.isArray(item)) {
+          res = res.concat(flatten4(item))
+        } else {
+          res.push(item)
+        }
+      })
+      return res
+    }
+    console.log(flatten4(array));
+
+    function flatten5(arr) {
+      while (arr.some(item => Array.isArray(item))) {
+        arr = [].concat(...arr)
+      }
+      return arr
+    }
+
+    console.log(flatten5(array));
+
+    console.log(() => this);
+  </script> -->
+  <!-- 求数组中最大值 -->
+  <!-- <script>
+    let arr = [2, 6, 8, 0, 4, 7]
+
+    function findMax(arr) {
+      return arr.reduce((max, item) => {
+        return max = max > item ? max : item
+      })
+    }
+
+    function findMax2(arr) {
+      let max = arr[0]
+      for (let i = 0; i < arr.length; i++) {
+        if (max < arr[i]) {
+          max = arr[i]
+        }
+      }
+      return max
+    }
+
+    console.log(findMax(arr));
+    console.log(Math.max(...arr));
+    console.log(findMax2(arr));
+    console.log(arr.sort().slice(-1)[0]);
+  </script> -->
+  <!-- 结构赋值 -->
+  <script>
+    var obj = {
+      name: "Jason",
+      age: 32,
+      height: 182
+    }
+    let { name, age, height } = obj
+    console.log(name, age, height);
+  </script>
+</body>
+</html>
