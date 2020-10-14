@@ -9,7 +9,7 @@
   <script>
     // AJAX是“Asynchronous JavaScript and XML”的缩写。他是指一种创建交互式网页应用的网页开发技术。
     var xhr = new XMLHttpRequest()  //1、创建XMLHttpRequest对象
-    xhr.open("POST", "http://192.168.31.167:3011?user=zhanglin&age=30")  //2、调用XMLHttpRequest的open函数
+    xhr.open("GET", "http://192.168.31.167:3011?user=zhanglin&age=30")  //2、调用XMLHttpRequest的open函数
 
     xhr.send()  //3、XMLHttpRequest向服务器发送请求
     xhr.onreadystatechange = function () {

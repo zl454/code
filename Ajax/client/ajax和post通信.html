@@ -9,7 +9,8 @@
   <script>
     var xhr = new XMLHttpRequest()  //1、创建XMLHttpRequest对象
     xhr.open("POST", "http://192.168.31.167:3010")  //2、调用XMLHttpRequest的open函数
-    xhr.send("user=zhanglin&age=30")  //3、XMLHttpRequest向服务器发送请求
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded"); //3、请求头文件
+    xhr.send("user=zhanglin&age=30")  //4、XMLHttpRequest向服务器发送请求
     xhr.onreadystatechange = function () {
       if (this.readyState === 4) {
         if (this.status === 200) {

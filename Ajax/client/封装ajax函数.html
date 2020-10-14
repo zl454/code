@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function ajax(url, fnSucc, fnFaild) {
+      var xhr
+      // 3、创建XMLHttpRequest对象
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest()  //现在主流浏览器
+      } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP")    //兼容IE6
+      }
+      // 4、处理响应
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            fnSucc(JSON.parse(xhr.responseText))
+          }
+          else {
+            if (fnFaild) fnFaild(xhr.responseText)
+          }
+        }
+      }
+      // 2、初始化XMLHttpRequest方法
+      xhr.open("GET", url)
+      // 3、XMLHttpRequest向服务器发送请求
+      xhr.send()
+    }
+    ajax("http://192.168.31.167:3011?user=zhanglin&age=30&say=hello", function (res) { console.log(res); }, function (req) {
+      console.log(req);
+    })
+  </script>
+</body>
+</html>
