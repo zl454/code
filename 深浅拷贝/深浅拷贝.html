@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./浅拷贝/自定义函数.js"></script>
+  <script src="./浅拷贝/Object.assign.js"></script>
+  <script src="./浅拷贝/扩展运算符.js"></script>
+  <script src="./浅拷贝/数组的方法.js"></script>
+  <script src="./深拷贝/JSON.js"></script>
+  <script src="./深拷贝/递归.js"></script>
+</head>
+<body>
+  <script>
+    var obj = { a: 1, arr: [2, 3] }
+    var array = ["q", "s", ["a", "b"]]
+    var shallowObj = shallowCopy(obj)
+    var shallowObj1 = assignCopy(obj)
+    var shallowObj2 = extendCopy(obj)
+    var shallowObj3 = arrayCopy(array)
+    var deepObj = jsonCopy(obj)
+    var deepObj2 = deepCopy(obj)
+    obj.arr[0] = 66
+    array[2][1] = "d"
+    console.log(shallowObj.arr[0]);
+    console.log(shallowObj1.arr[0]);
+    console.log(shallowObj2.arr[0]);
+    console.log(shallowObj3[2][1]);
+    console.log(deepObj.arr[0]);
+    console.log(deepObj2.arr[0]);
+
+  </script>
+</body>
+</html>

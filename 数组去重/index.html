@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = [1, 1, 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN, 'NaN', 0, 0, 'a', 'a', {}, {}];
+    function unique1(arr) {
+      return Array.from(new Set(arr))
+      // return [...new Set(arr)]   //扩展运算符更便捷
+    }
+    // console.log("方法一：Set去重，无法去除{}空对象", unique1(arr));
+    function unique2(arr) {
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+          if (arr[i] === arr[j]) {
+            arr.splice(j, 1)
+            j--
+          }
+        }
+      }
+      return arr
+    }
+    // console.log("方法二：for嵌套去重，无法去除NaN和{}空对象", unique2(arr));
+    function unique3(arr) {
+      var array = []
+      for (var i = 0; i < arr.length; i++) {
+        if (array.indexOf(arr[i]) === -1) {
+          array.push(arr[i])
+        }
+      }
+      return array
+    }
+    // console.log("方法三：indexOf去重，无法去除NaN和{}空对象", unique3(arr));
+    function unique4(arr) {
+      arr.sort()
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] === arr[i - 1]) {
+          arr.splice(arr[i])
+          i--
+        }
+      }
+      return arr
+    }
+    // console.log("方法四：sort去重，无法去除NaN和{}空对象", unique4(arr));
+    function unique5(arr) {
+      var obj = {}
+      return arr.filter(function (item, index, arr) {
+        return obj.hasOwnProperty(typeof item + item) ? false : (obj[typeof item + item] = true)
+      })
+    }
+    // console.log("方法五：hasOwnproperty去重", unique5(arr));
+    function unique6(arr) {
+      return arr.filter(function (item, index, arr) {
+        // 检索当前元素在元素数组中第一次出现的索引，相同的话返回当前元素
+        return arr.indexOf(item, 0) === index
+      })
+    }
+    // console.log("方法六：filter检索索引去重", unique6(arr));
+    function unique7(arr) {
+      var array = arr
+      var len = array.length
+      array.sort()
+      function loop(index) {
+        if (index < 1) return
+        if (array[index] === array[index - 1]) {
+          array.splice(index, 1)
+        }
+        loop(index - 1)
+      }
+      loop(len - 1)
+      return array
+    }
+    // console.log("方法七：递归去重，无法去除NaN和{}空对象", unique7(arr));
+    function unique8(arr) {
+      let map = new Map()
+      let array = new Array()
+      for (var i = 0; i < arr.length; i++) {
+        if (map.has(arr[i])) {
+          map.set(arr[i], true)
+        } else {
+          map.set(arr[i], false)
+          array.push(arr[i])
+        }
+      }
+      return array
+    }
+    // console.log("方法七：map数据结构去重，无法去除{}空对象", unique8(arr));
+  </script>
+</body>
+</html>
