@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 父子传值</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <app-header v-on:titleChanged="updateTitle"></app-header>
+    <h2>{{title}}</h2>
+  </div>
+  <script>
+    Vue.component("app-header", {
+      data() {
+        return {
+          title: "Vue.js Demo"
+        }
+      },
+      methods: {
+        changeTitle() {
+          this.$emit("titleChanged", "子向父组件传值");//自定义事件  传递值“子向父组件传值”
+        }
+      },
+      template: `
+        <header>
+          <h1 @click="changeTitle">{{title}}</h1>//绑定一个点击事件
+        </header>
+      `
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        title: "传递的是一个值"
+      },
+      methods: {
+        updateTitle(e) {   //声明这个函数
+          this.title = e;
+        }
+      },
+    })
+  </script>
+</body>
+</html>
