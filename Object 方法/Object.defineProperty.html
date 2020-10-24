@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {}
+    // 直接赋值
+    obj.a = 1
+    Object.defineProperty(obj, "b", {
+      value: 2
+    })
+    console.log(obj);//{a:1,b:2}
+
+    Object.defineProperty(obj, "c", {
+      value: 12,
+      writable: false,
+      enumerable: false,
+      configurable: false
+    })
+    obj.c = 13
+    console.log(obj.c);//12
+    console.log(Object.keys(obj));//["a"]
+    delete obj.c
+    console.log(obj);//{a:1,b:2,c:12}
+
+
+    function Archiver() {
+      var temperature = null;
+      var archive = [];
+
+      Object.defineProperty(this, 'temperature', {
+        get: function () {
+          console.log('get!');
+          return temperature;
+        },
+        set: function (value) {
+          temperature = value;
+          archive.push({ val: temperature });
+        }
+      });
+
+      this.getArchive = function () { return archive; };
+    }
+
+    var arc = new Archiver();
+    console.log(arc.temperature);
+    arc.temperature; // 'get!'
+    arc.temperature = 11;
+    arc.temperature = 13;
+    arc.getArchive(); // [{ val: 11 }, { val: 13 }]
+    console.log(arc.getArchive());
+  </script>
+</body>
+</html>
