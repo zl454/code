@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录弹窗</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      height: 60px;
+      width: 100%;
+      background: skyblue;
+    }
+
+    .top-bar_left {
+      float: left;
+      line-height: 60px;
+      margin-left: 20px;
+    }
+
+    .top-bar_right {
+      float: right;
+      line-height: 60px;
+    }
+
+    .login-btn {
+      float: left;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .signin-btn {
+      float: left;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .login-wrapper {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 16px;
+      line-height: 24px;
+      background: orange;
+    }
+
+    .login-title {
+      overflow: hidden;
+    }
+
+    .title-text {
+      float: left;
+    }
+
+    .close-btn {
+      float: right;
+      border: 1px solid #000;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      cursor: pointer;
+      background: gray;
+    }
+
+    .confirm-btn {
+      float: left;
+    }
+
+    .clear-btn {
+      float: right;
+    }
+
+    .login-title,
+    .username-input,
+    .pwd-input,
+    .btn-wrapper {
+      margin: 8px 0;
+    }
+
+    .btn-wrapper {
+      padding: 0 36px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-bar">
+    <div class="top-bar_left">BLOG</div>
+    <div class="top-bar_right">
+      <div class="login-btn">登录</div>
+      <div class="signin-btn">注册</div>
+    </div>
+  </nav>
+  <div class="login-wrapper">
+    <div class="login-title">
+      <div class="title-text">登录框</div>
+      <div class="close-btn">X</div>
+    </div>
+    <div class="username-input">
+      <span class="login-text">用户名:</span>
+      <input type="text">
+    </div>
+    <div class="pwd-input">
+      <span class="login-text">密 码：</span>
+      <input type="password">
+    </div>
+    <div class="btn-wrapper">
+      <button class="confirm-btn">确定</button>
+      <button class="clear-btn">清空</button>
+    </div>
+  </div>
+</body>
+</html>
