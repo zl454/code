@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background: orange;
+      margin: 20px;
+      float: left;
+    }
+
+    .box>div {
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      line-height: 100px;
+      text-align: center;
+    }
+
+    /*------------------------*\
+      方式一：父相子绝，子元素设置top,left(-50%),margin-left,margin-top (负宽高的一半)
+      需要固定宽高
+    \*------------------------*/
+    .one {
+      position: relative;
+    }
+
+    .one>div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -50px;
+    }
+
+    /*------------------------*\
+      方式二：position:fixed ,相对于浏览器水平垂直居中
+    \*------------------------*/
+
+    /* .two {
+      position: relative;
+    }
+
+    .two>div {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -50px;
+    } */
+
+    /*------------------------*\
+      方式三：position:fixed + margin:auto
+    \*------------------------*/
+    /* .three {
+      position: relative;
+    }
+
+    .three>div {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    } */
+    /*------------------------*\
+      方式四：position:absolute + margin:auto
+      父绝子绝
+    \*------------------------*/
+    /* .four {
+      position: absolute;
+    }
+
+    .four>div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    } */
+
+    /*------------------------*\
+      方式五：设置 line-height,text-align
+    \*------------------------*/
+    .five {
+      line-height: 200px;
+      text-align: center;
+    }
+
+    /*------------------------*\
+      方式六：css3 -webkit-box
+    \*------------------------*/
+    .six {
+      display: -webkit-box;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+    }
+
+    /*------------------------*\
+      方式七：相对定位加transform
+    \*------------------------*/
+    .seven>div {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /*------------------------*\
+      方式八：flex布局
+    \*------------------------*/
+    .eight {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /*------------------------*\
+      方式九：Grid布局
+    \*------------------------*/
+    .nine {
+      display: grid;
+      justify-items: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="one box">
+    <div>one</div>
+  </div>
+  <div class="two box">
+    <div>two</div>
+  </div>
+  <div class="three box">
+    <div>three</div>
+  </div>
+  <div class="four box">
+    <div>four</div>
+  </div>
+  <div class="five box">
+    five
+  </div>
+  <div class="six box">
+    six
+  </div>
+  <div class="seven box">
+    <div>seven</div>
+  </div>
+  <div class="eight box">
+    <div>eight</div>
+  </div>
+  <div class="nine box">
+    <div>nine</div>
+  </div>
+
+</body>
+</html>
