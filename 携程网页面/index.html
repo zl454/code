@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>携程网</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* 顶部块样式 */
+    header {
+      width: 100%;
+      display: flex;
+    }
+
+    header>a {
+      /* width: 100%; */
+      flex: 1;
+    }
+
+    header>a>img {
+      width: 100%;
+    }
+
+    main {
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    main>.item {
+      width: 100%;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: flex;
+    }
+
+    main>.item>.left {
+      flex: 1;
+    }
+
+    main>.item>.right {
+      flex: 2;
+      flex-wrap: wrap;
+      display: flex;
+    }
+
+    main>.item>.right>a {
+      color: #000;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      width: 50%;
+      display: block;
+      line-height: 50px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    main>.item>.right>a:nth-last-of-type(-n+2) {
+      border-bottom: none
+    }
+
+    .item:nth-child(2) {
+      background-color: orchid;
+    }
+
+    .item:nth-child(3) {
+      background-color: peru;
+    }
+
+    .item:nth-child(4) {
+      background-color: burlywood;
+    }
+
+    footer {
+      width: 100%;
+    }
+
+    footer>nav {
+      width: 100%;
+      margin: 15px 0;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+    }
+
+    footer>nav>a {
+      text-decoration: none;
+      color: #888;
+      margin-left: 10px;
+    }
+
+    footer>p {
+      margin: 5px 0;
+      display: flex;
+      font-size: 16px;
+      line-height: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    footer>p>a {
+      display: inline-block;
+      border-right: 1px solid #ccc;
+      padding-right: 10px;
+      margin: 5px 10px 5px 0;
+    }
+
+    footer>p>a:last-child {
+      border-right: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="">
+        <img src="./images/adv.png" alt="">
+      </a>
+    </header>
+    <main>
+      <section class="item">
+        <div class="left"></div>
+        <div class="right">
+          <a href="">海外酒店</a>
+          <a href="">团购</a>
+          <a href="">特惠酒店</a>
+          <a href="">客栈公寓</a>
+        </div>
+      </section>
+      <section class="item">
+        <div class="left"></div>
+        <div class="right">
+          <a href="">海外酒店</a>
+          <a href="">团购</a>
+          <a href="">特惠酒店</a>
+          <a href="">客栈公寓</a>
+        </div>
+      </section>
+      <section class="item">
+        <div class="left"></div>
+        <div class="right">
+          <a href="">海外酒店</a>
+          <a href="">团购</a>
+          <a href="">特惠酒店</a>
+          <a href="">客栈公寓</a>
+        </div>
+      </section>
+      <section class="item">
+        <div class="left"></div>
+        <div class="right">
+          <a href="">海外酒店</a>
+          <a href="">团购</a>
+          <a href="">特惠酒店</a>
+          <a href="">客栈公寓</a>
+        </div>
+      </section>
+      <!-- <section>
+        <div class="left">
+          <p>签到领积分</p>
+          <p>天天有礼 积分不止</p>
+          <img src="" alt="">
+        </div>
+        <div class="right">
+          <p>特卖汇</p>
+          <p>限时抢购 超值预售</p>
+          <img src="" alt="">
+        </div>
+      </section> -->
+    </main>
+    <footer>
+      <nav>
+        <a href="">电话预订</a>
+        <a href="">下载客户端</a>
+        <a href="">我的订单</a>
+      </nav>
+      <p>
+        <a href="">网站地图</a>
+        <a href="">ENGLISH</a>
+        <a href="">电脑版</a>
+      </p>
+      <p>&copy;2015 携程旅行</p>
+    </footer>
+  </div>
+</body>
+</html>
