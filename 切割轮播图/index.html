@@ -32,7 +32,7 @@
       float: left;
       position: relative;
       transform-style: preserve-3d;
-      transition: transform .3s linear;
+      transition: transform .5s linear;
     }
 
     ul>li>span {
@@ -156,6 +156,9 @@
       if (event.target.className === "pre") {
         num++
       } else num--;
+      transform()
+    }
+    function transform() {
       let lis = document.getElementsByTagName("li")
       Array.from(lis).forEach((el, index) => {
         el.style.transform = 'rotateX(' + num * 90 + 'deg)',
@@ -163,8 +166,15 @@
       });
       setTimeout(() => {
         flag = true
-      }, 1200);
+      }, 1500);
     }
+    setInterval(() => {
+      if (flag === false) return
+      flag = false
+      num--
+      transform()
+
+    }, 3000);
   </script>
 </body>
 </html>
