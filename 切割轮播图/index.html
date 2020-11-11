@@ -93,7 +93,14 @@
       transform: translate3d(0, -50%, 0);
       color: #fff !important;
       background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
       z-index: 10;
+      transition: opacity 1s;
+    }
+
+    .view:hover>.pre,
+    .view:hover>.next {
+      opacity: 1;
     }
 
     .pre {
