@@ -32,7 +32,7 @@
       float: left;
       position: relative;
       transform-style: preserve-3d;
-      transition: transform .5s;
+      transition: transform .3s linear;
     }
 
     ul>li>span {
@@ -45,25 +45,21 @@
 
     ul>li>span:nth-of-type(1) {
       background: url(1.jpg);
-      background-size: cover;
       transform: translateZ(150px);
     }
 
     ul>li>span:nth-of-type(2) {
       background: url(2.jpg);
-      background-size: cover;
       transform: translateY(-150px) rotateX(90deg);
     }
 
     ul>li>span:nth-of-type(3) {
       background: url(3.jpg);
-      background-size: cover;
       transform: translateZ(-150px) rotateX(180deg);
     }
 
     ul>li>span:nth-of-type(4) {
       background: url(4.jpg);
-      background-size: cover;
       transform: translateY(150px) rotateX(-90deg);
     }
 
