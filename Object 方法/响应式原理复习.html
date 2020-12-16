@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="msg"></p>
+  <script>
+    const data = {
+      name: 'zl',
+      age: '30',
+      height: '170',
+      weight: '70',
+      son: {
+        name: 'kk',
+        age: '2'
+      }
+    }
+    function render() {
+      let str = ''
+      function objToStr(obj) {
+        if (!obj || typeof obj !== "object") return
+        Object.keys(obj).forEach(item => {
+          let value = obj[item]
+          if (typeof value === "object") {
+            objToStr(value)
+          } else
+            str += (`${item}:${value} `)
+        })
+      }
+      objToStr(data)
+      msg.innerHTML = str
+    }
+    render()
+    observer(data)
+    function observer(obj) {
+      if (!obj || typeof obj !== "object") return
+      Object.keys(obj).forEach(key => {
+        defineReative(obj, key, obj[key])
+      })
+      function defineReative(obj, key, value) {
+        observer(value)
+        Object.defineProperty(obj, key, {
+          enumerable: true,
+          configurable: true,
+          set: function (newVal) {
+            observer(newVal)
+            if (newVal !== value) {
+              console.log('set', newVal);
+              value = newVal
+              render()
+            }
+          },
+          get: function () {
+            console.log('get', value);
+            return value
+          }
+        })
+      }
+    }
+  </script>
+</body>
+</html>

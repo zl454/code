@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <script>
+    function render() {
+      //模拟视图渲染，set 的时候回会进行重新渲染
+      console.log('模拟视图渲染');
+      let str = ''
+      toStr(data)
+      function toStr(obj) {
+        if (!obj || typeof obj !== "object") return
+        Object.keys(obj).forEach((key) => {
+          let value = obj[key]
+          if (typeof value !== "object") {
+            str += (key + ':' + value + ' ')
+          }
+          toStr(value)
+        })
+      }
+      title.innerHTML = str
+    }
+    let data = {
+      name: 'zl',
+      msg: {
+        age: 30,
+        height: 180,
+        weight: 68
+      }
+    }
+    render()
+
+    let handle = {
+      get(target, key) {
+        if (typeof target[key] == "object" && target[key] !== null) {
+          return new Proxy(target[key], handle)
+        }
+        console.log('get', key);
+        return Reflect.get(target, key)
+      },
+      set(target, key, value) {
+        if (key === 'length') return true
+        console.log('set', key);
+        Reflect.set(target, key, value)
+        render()
+        return
+      }
+    }
+    let proxy = new Proxy(data, handle)
+  </script>
+</body>
+</html>
