@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      /* margin: 100px auto; */
+    }
+
+    td,
+    th {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    div {
+      float: left;
+      margin-right: 20px;
+    }
+
+    input {
+      width: 18px;
+      height: 18px;
+      margin: 5px 0;
+      text-align: center;
+    }
+
+    label {
+      display: inline-block;
+      width: 80px;
+      text-align: center;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    span {
+      display: inline-block;
+      width: 180px;
+      text-align: center;
+      margin-left: 10px;
+      font-weight: 600;
+    }
+
+    P>button {
+      width: 40px;
+      height: 30px;
+      margin: 5px
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <div>
+    <h2>数据：</h2>
+    底注：<input style="width:100px" type="text" class="bet" value="0.2">
+    <p style="height:24px" id="output">
+      结果：
+    </p>
+    <button onclick="addData()">添加</button>
+    <h2>统计：</h2>
+    <table>
+      <tr>
+        <th>轮次</th>
+        <th>底注</th>
+        <th>累注</th>
+        <th>点数</th>
+        <th>高</th>
+        <th>低</th>
+        <th>结果</th>
+        <th>收益</th>
+      </tr>
+      <tr class="table">
+        <td>第一轮</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table">
+        <td>第二轮</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table">
+        <td>第三轮</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table">
+        <td>第四轮</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table">
+        <td>第五轮</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <script>
+    const data = [
+      {
+        value: 'A',
+        num: 1,
+        higher: 1.06,
+        lower: 0,
+      },
+      {
+        value: "2",
+        num: 2,
+        higher: 1.15,
+        lower: 11.44,
+      },
+      {
+        value: "3",
+        num: 3,
+        higher: 1.26,
+        lower: 5.91,
+      },
+      {
+        value: "4",
+        num: 4,
+        higher: 1.4,
+        lower: 4.02,
+      },
+      {
+        value: "5",
+        num: 5,
+        higher: 1.56,
+        lower: 3.05,
+      },
+      {
+        value: "6",
+        num: 6,
+        higher: 1.78,
+        lower: 2.46,
+      },
+      {
+        value: "7",
+        num: 7,
+        higher: 2.05,
+        lower: 2.05,
+      },
+      {
+        value: "8",
+        num: 8,
+        higher: 2.46,
+        lower: 1.78,
+      },
+      {
+        value: "9",
+        num: 9,
+        higher: 3.05,
+        lower: 1.56,
+      },
+      {
+        value: "10",
+        num: 10,
+        higher: 4.02,
+        lower: 1.4,
+      },
+      {
+        value: "J",
+        num: 11,
+        higher: 5.91,
+        lower: 1.26,
+      },
+      {
+        value: "Q",
+        num: 12,
+        higher: 11.44,
+        lower: 1.15,
+      }, {
+        value: "K",
+        num: 13,
+        higher: 0,
+        lower: 1.06,
+      }
+    ]
+    let str = `<table><tr><th>LOWER</th><th>POINT</th><th>HIGHER</th></tr>`
+    data.forEach(item => {
+      str += `<tr><td>${item.lower}</td><td style="font-weight:600"><label> <input type="radio" name="poker" class="poker" value=${item.value}>${item.value}</label></td><td>${item.higher}</td></tr>`
+    })
+    str += "</table>"
+    box.innerHTML = str
+    let round = 0
+    let arr = []
+    function addData() {
+      let input = ''
+      let num = ''
+      let bet = document.querySelector(".bet").value
+      document.querySelectorAll(".poker").forEach((item, index) => {
+        if (item.checked) {
+          num = data[index].num
+          arr.push(num)
+          input = item.value
+          return
+        };
+      });
+      if (!input) return
+
+      output.textContent += input + ' '
+      let td = document.querySelectorAll(".table")[round].children
+      // 底注
+      td[1].textContent = bet
+      if (round === 0) td[2].textContent = bet
+      // 点数
+      td[3].textContent = input
+      // 高
+      console.log(arr);
+      td[4].textContent = (((13 - num) * 4 - arr.filter(item => item > num).length) / (52 - round - 1)).toFixed(2)
+      // 低
+      td[5].textContent = (((num - 1) * 4 - arr.filter(item => item < num).length) / (52 - round - 1)).toFixed(2)
+      round++
+    }
+
+  </script>
+</body>
+</html>
